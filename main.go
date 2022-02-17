@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	solution "square/square"
+	"solution/solution"
 )
 
 func main() {
