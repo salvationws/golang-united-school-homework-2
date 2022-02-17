@@ -23,12 +23,12 @@ func CalcSquare(sideLen float64, sidesNum sidesInt) float64 {
 		SidesSquare := (sideLen * sideLen)
 		return SidesSquare
 	} else if sidesNum == 3 {
-		SidesTriangle := ((sideLen * sideLen) * math.Sqrt(3)) / 4
+		SidesTriangle := (math.Pow(sideLen, 2) * math.Sqrt(3)) / 4
 		return SidesTriangle
 	} else if sidesNum == 0 {
 		SidesCircle := math.Pi * (sideLen * sideLen)
 		return SidesCircle
+	} else {
+		return 0
 	}
-
-	return 0
 }
