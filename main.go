@@ -6,6 +6,8 @@ import (
 )
 
 func main() {
-	fmt.Println("Your figure is:")
-	solution.CalcSquare(5.0, 0)
+	fmt.Println("Area:")
+	fmt.Println(solution.CalcSquare(4.4, 4))
+	fmt.Println(solution.CalcSquare(4.4, 3))
+	fmt.Println(solution.CalcSquare(4.4, 0))
 }

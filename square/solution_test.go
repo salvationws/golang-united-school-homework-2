@@ -1,35 +1,69 @@
 package solution
 
 import (
+	"math"
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
 
-func TestFizzBuzz(t *testing.T) {
-	nums := []int{1, 2, 3, 4, 10, 20, 30, 50, 80, 99, 100, 110, 220, 330, 400}
-	for _, v := range nums {
-		eFizz, eBuzz, eFizzBuzz := expected(v)
-		gFizz, gBuzz, gFizzBuzz := FizzBuzz(v)
+const deltaTesting = 0.001
 
-		assert.Equal(t, eFizz, gFizz)
-		assert.Equal(t, eBuzz, gBuzz)
-		assert.Equal(t, eFizzBuzz, gFizzBuzz)
-	}
-
+func equalDeltaFloat64(a, b, delta float64) bool {
+	return math.Abs(b-a) < delta
 }
 
-func expected(num int) (fizz int, buzz int, fizzBuzz int) {
-	for i := 1; i <= num; i++ {
-		if i%3 == 0 {
-			fizz++
-		}
-		if i%5 == 0 {
-			buzz++
-		}
-		if i%15 == 0 {
-			fizzBuzz++
+func Test_solutionSquare(t *testing.T) {
+	data := []struct {
+		In       float64
+		Expected float64
+	}{
+		{In: 0, Expected: 0},
+		{In: 1, Expected: 1},
+		{In: 4.4, Expected: 19.36},
+		{In: 15.67, Expected: 245.5489},
+	}
+	for _, q := range data {
+		got := CalcSquare(q.In, SidesSquare)
+		if !equalDeltaFloat64(got, q.Expected, deltaTesting) {
+			t.Logf("Square4 expected: %f, got: %f", q.Expected, got)
+			t.Fail()
 		}
 	}
-	return
+}
+
+func Test_solutionTriangle(t *testing.T) {
+	data := []struct {
+		In       float64
+		Expected float64
+	}{
+		{In: 0, Expected: 0},
+		{In: 1, Expected: 0.433013},
+		{In: 4.4, Expected: 8.383126},
+		{In: 15.67, Expected: 106.325793},
+	}
+	for _, q := range data {
+		got := CalcSquare(q.In, SidesTriangle)
+		if !equalDeltaFloat64(got, q.Expected, deltaTesting) {
+			t.Logf("Square4 expected: %f, got: %f", q.Expected, got)
+			t.Fail()
+		}
+	}
+}
+
+func Test_solutionCircle(t *testing.T) {
+	data := []struct {
+		In       float64
+		Expected float64
+	}{
+		{In: 0, Expected: 0},
+		{In: 1, Expected: 3.141593},
+		{In: 4.4, Expected: 60.821234},
+		{In: 15.67, Expected: 771.414620},
+	}
+	for _, q := range data {
+		got := CalcSquare(q.In, SidesCircle)
+		if !equalDeltaFloat64(got, q.Expected, deltaTesting) {
+			t.Logf("Square0 expected: %f, got: %f", q.Expected, got)
+			t.Fail()
+		}
+	}
 }

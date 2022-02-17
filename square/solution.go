@@ -1,7 +1,6 @@
 package solution
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -15,20 +14,21 @@ import (
 
 type sidesInt int
 
+var SidesTriangle sidesInt = 3
+var SidesSquare sidesInt = 4
+var SidesCircle sidesInt = 0
+
 func CalcSquare(sideLen float64, sidesNum sidesInt) float64 {
-	switch sidesNum {
-	case 0:
-		fmt.Print("Circle with Radius: ")
-		size := math.Pi * sideLen * 2.0
-		fmt.Print(size)
-		fmt.Print(" and Diameter: ")
-		fmt.Print(sideLen * 2.0)
-	case 3:
-		fmt.Print("Equilateral Triangle")
-	case 4:
-		fmt.Print("Square")
-	default:
-		return 0
+	if sidesNum == 4 {
+		SidesSquare := (sideLen * sideLen)
+		return SidesSquare
+	} else if sidesNum == 3 {
+		SidesTriangle := ((sideLen * sideLen) * math.Sqrt(3)) / 4
+		return SidesTriangle
+	} else if sidesNum == 0 {
+		SidesCircle := math.Pi * (sideLen * sideLen)
+		return SidesCircle
 	}
-	return float64(sidesNum)
+
+	return 0
 }
